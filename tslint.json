@@ -1,0 +1,24 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "rules": {
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "radix": false,
+        "no-trailing-whitespace": true,
+        "semicolon": true,
+        "trailing-comma": false,
+        "newline-before-return": true
+    },
+    "jsRules": {
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "radix": false
+    }
+}

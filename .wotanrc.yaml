@@ -1,0 +1,2 @@
+# use all recommended rules
+extends: wotan:recommended
