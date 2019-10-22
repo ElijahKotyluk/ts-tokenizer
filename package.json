@@ -5,11 +5,18 @@
   "main": "src/index.js",
   "author": "Elijah Kotyluk",
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:fix && yarn test:unit"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "lint": "wotan",
     "lint:fix": "wotan --fix",
-    "linter": "wotan -m @fimbul/valtyr"
+    "linter": "wotan -m @fimbul/valtyr",
+    "test:unit": "jest",
+    "commit": "yarn git-cz"
   },
   "devDependencies": {
     "@fimbul/valtyr": "^0.21.0",
@@ -17,8 +24,11 @@
     "@types/jest": "^24.0.19",
     "@types/node": "^12.11.2",
     "babel-jest": "^24.9.0",
+    "git-cz": "^3.2.1",
+    "husky": "^3.0.9",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
-  }
+  },
+  "dependencies": {}
 }
