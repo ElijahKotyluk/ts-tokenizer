@@ -8,13 +8,20 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint:fix && yarn test:unit"
+    },
+    "lint-staged": {
+      "*.[jt]s": [
+        "yarn run lint:fix",
+        "yarn run linter",
+        "yarn run test:unit"
+      ]
     }
   },
   "scripts": {
     "build": "tsc",
     "lint": "wotan",
     "lint:fix": "wotan --fix",
-    "linter": "wotan -m @fimbul/valtyr",
+    "linter": "wotan -m @fimbul/valtyr --fix",
     "test:unit": "jest",
     "commit": "yarn git-cz"
   },
