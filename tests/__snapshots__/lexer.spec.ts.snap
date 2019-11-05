@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lexer addRule method should match snapshot 1`] = `
+Lexer {
+  "column": 1,
+  "index": 0,
+  "input": "",
+  "line": 1,
+  "rules": Array [
+    Rule {
+      "action": undefined,
+      "begin": Array [
+        0,
+      ],
+      "regex": /\\\\n/,
+      "type": "newline",
+    },
+    Rule {
+      "action": undefined,
+      "begin": Array [
+        0,
+      ],
+      "regex": "/
+/",
+      "type": "newline",
+    },
+  ],
+  "tokens": Array [],
+}
+`;
+
+exports[`Lexer setInput method should match snapshot 1`] = `
+Lexer {
+  "column": 1,
+  "index": 0,
+  "input": "some random input string",
+  "line": 1,
+  "rules": Array [],
+  "tokens": Array [],
+}
+`;
+
+exports[`Lexer should match snapshot 1`] = `
+Lexer {
+  "column": 1,
+  "index": 0,
+  "input": "random string of random strings",
+  "line": 1,
+  "rules": Array [],
+  "tokens": Array [],
+}
+`;
