@@ -8,20 +8,11 @@ Lexer {
   "line": 1,
   "rules": Array [
     Rule {
-      "action": undefined,
       "begin": Array [
         0,
       ],
-      "regex": /\\\\n/,
-      "type": "newline",
-    },
-    Rule {
-      "action": undefined,
-      "begin": Array [
-        0,
-      ],
-      "regex": "/
-/",
+      "fn": undefined,
+      "regex": /\\\\n/gmu,
       "type": "newline",
     },
   ],
