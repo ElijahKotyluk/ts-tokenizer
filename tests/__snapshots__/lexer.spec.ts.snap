@@ -8,15 +8,18 @@ Lexer {
   "line": 1,
   "rules": Array [
     Rule {
-      "begin": Array [
-        0,
-      ],
+      "begin": Array [],
       "fn": undefined,
       "regex": /\\\\n/gmu,
       "type": "newline",
     },
   ],
-  "tokens": Array [],
+  "state": State {
+    "consumed": "",
+    "input": "",
+    "remaining": "",
+    "tokens": Array [],
+  },
 }
 `;
 
@@ -27,7 +30,12 @@ Lexer {
   "input": "some random input string",
   "line": 1,
   "rules": Array [],
-  "tokens": Array [],
+  "state": State {
+    "consumed": "",
+    "input": "",
+    "remaining": "",
+    "tokens": Array [],
+  },
 }
 `;
 
@@ -38,6 +46,11 @@ Lexer {
   "input": "random string of random strings",
   "line": 1,
   "rules": Array [],
-  "tokens": Array [],
+  "state": State {
+    "consumed": "",
+    "input": "",
+    "remaining": "",
+    "tokens": Array [],
+  },
 }
 `;
