@@ -23,12 +23,6 @@ describe('Lexer', () => {
             expect(lexer.rules).toHaveLength(1);
         });
 
-        it('should convert regex string to RegExp object', () => {
-            lexer.addRule('newline', '/\n/');
-
-            expect(lexer.rules).toHaveLength(2);
-        });
-
         it('should match snapshot', () => {
             expect(lexer).toMatchSnapshot();
         });
@@ -47,6 +41,19 @@ describe('Lexer', () => {
 
         it('should match snapshot', () => {
             expect(lexer).toMatchSnapshot();
+        });
+    });
+
+    describe('scan method', () => {
+        const lexer = new Lexer();
+        const input = 'some 12 random 343 input';
+
+        it('should return an array matches.', () => {
+            lexer.setInput(input);
+            lexer.addRule('numbers', /[0-9]+/);
+
+            const matches = lexer.scan();
+            expect(matches).toHaveLength(1);
         });
     });
 });
