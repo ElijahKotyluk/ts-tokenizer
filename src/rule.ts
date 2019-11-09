@@ -1,20 +1,20 @@
 export interface IRule {
     type: string;
-    regex: RegExp | string;
-    action?: () => any;
-    begin?: number[];
+    regex: RegExp;
+    fn?: () => any;
+    begin: number[];
 }
 
 export default class Rule implements IRule {
     public type: string;
-    public regex: RegExp | string;
-    public action?: () => any;
-    public begin?: number[];
+    public regex: RegExp;
+    public fn?: () => any;
+    public begin: number[];
 
-    constructor(type: string, regex: RegExp | string, action?: () => any, begin?: number[]) {
+    constructor(type: string, regex: RegExp, fn?: () => any, begin?: number[]) {
         this.type = type;
         this.regex = regex;
-        this.action = action;
-        this.begin = begin;
+        this.fn = fn;
+        this.begin = [] || begin;
     }
 }
