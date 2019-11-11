@@ -15,9 +15,12 @@ Lexer {
     },
   ],
   "state": State {
+    "column": 0,
     "consumed": "",
+    "index": 0,
     "input": "",
     "remaining": "",
+    "row": 0,
     "tokens": Array [],
   },
 }
@@ -31,9 +34,12 @@ Lexer {
   "line": 1,
   "rules": Array [],
   "state": State {
+    "column": 0,
     "consumed": "",
+    "index": 0,
     "input": "",
     "remaining": "",
+    "row": 0,
     "tokens": Array [],
   },
 }
@@ -47,9 +53,12 @@ Lexer {
   "line": 1,
   "rules": Array [],
   "state": State {
+    "column": 0,
     "consumed": "",
+    "index": 0,
     "input": "",
     "remaining": "",
+    "row": 0,
     "tokens": Array [],
   },
 }
