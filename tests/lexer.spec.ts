@@ -28,6 +28,34 @@ describe('Lexer', () => {
         });
     });
 
+    describe('addRules method', () => {
+        const lexer = new Lexer();
+
+        it('should push each rule in an array of rules to the lexer class rules', () => {
+            const rulesArray = [
+              {
+                regex: /\n/,
+                type: 'newline'
+              },
+              {
+                fn: () => null,
+                regex: /[0-9]/,
+                type: 'numbers'
+              },
+              {
+                begin: [1],
+                fn: () => null,
+                regex: /[a-zA-Z]/,
+                type: 'letters'
+              }
+            ];
+
+            lexer.addRules(rulesArray);
+
+            expect(lexer.rules).toHaveLength(3);
+        });
+    });
+
     describe('setInput method', () => {
         const lexer = new Lexer();
         const input = 'some random input string';
