@@ -94,9 +94,9 @@ describe('Lexer', () => {
 
         it('should throw an error when an empty string is matched', () => {
             const lexer = new Lexer();
-            lexer.setInput(' some string');
+            lexer.setInput('');
 
-            expect(() => lexer.match(/\s/)).toThrow();
+            expect(() => lexer.match(/^$/)).toThrow();
         });
     });
 

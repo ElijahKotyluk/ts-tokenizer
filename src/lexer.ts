@@ -98,7 +98,7 @@ export default class Lexer implements ILexer {
         const match = regex.exec(this.state.input);
 
         if (match) {
-            if (match![0] === ' ') {
+            if (match![0] === '') {
                 throw new Error('Regex should not match empty string');
             }
 
