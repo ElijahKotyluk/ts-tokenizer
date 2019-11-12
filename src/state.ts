@@ -6,8 +6,7 @@ export interface IState {
     input: string;
     tokens: IToken[];
     index: number;
-    column: number;
-    row: number;
+    position: number;
 }
 
 export default class State implements IState {
@@ -16,8 +15,7 @@ export default class State implements IState {
     public input: string;
     public tokens: IToken[];
     public index: number;
-    public column: number;
-    public row: number;
+    public position: number;
 
     constructor(input?: string) {
         this.consumed = '';
@@ -25,8 +23,7 @@ export default class State implements IState {
         this.remaining = '';
         this.tokens = [];
         this.index = 0;
-        this.column = 0;
-        this.row = 0;
+        this.position = 0;
     }
 
     /**
@@ -38,7 +35,6 @@ export default class State implements IState {
         this.remaining = '';
         this.tokens = [];
         this.index = 0;
-        this.column = 0;
-        this.row = 0;
+        this.position = 0;
     }
 }
