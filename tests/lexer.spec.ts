@@ -3,8 +3,7 @@ import Lexer from '../src/lexer';
 describe('Lexer', () => {
 
     it('should match snapshot', () => {
-        const lexer = new Lexer();
-        lexer.input = 'random string of random strings';
+        const lexer = new Lexer('random string of random strings');
 
         expect(lexer).toMatchSnapshot();
     });
@@ -12,7 +11,7 @@ describe('Lexer', () => {
     it('should have an optional input on instantiation', () => {
         const lexer = new Lexer('random string of random strings');
 
-        expect(lexer.input).toBe('random string of random strings');
+        expect(lexer.state.input).toBe('random string of random strings');
     });
 
     describe('addRule method', () => {
@@ -64,7 +63,7 @@ describe('Lexer', () => {
 
             lexer.setInput(input);
 
-            expect(lexer.input).toBe(input);
+            expect(lexer.state.input).toBe(input);
         });
 
         it('should match snapshot', () => {
@@ -72,16 +71,46 @@ describe('Lexer', () => {
         });
     });
 
-    describe('scan method', () => {
+    describe('consume method', () => {
+        it('should update the input based on passed length', () => {
+            const lexer = new Lexer();
+            lexer.setInput('hello');
+
+            const consumed = lexer.consume(1);
+
+            expect(lexer.state.input).toBe('ello');
+        });
+    });
+
+    describe('match method', () => {
+        it('should match the passed regex to the input of the Lexer', () => {
         const lexer = new Lexer();
+        lexer.setInput('some string');
+
+        const match = lexer.match(/[a-z]/);
+
+        expect(match![0]).toBe('s');
+        });
+
+        it('should throw an error when an empty string is matched', () => {
+            const lexer = new Lexer();
+            lexer.setInput(' some string');
+
+            expect(() => lexer.match(/\s/)).toThrow();
+        });
+    });
+
+    describe('scan method', () => {
         const input = 'some 12 random 343 input';
 
         it('should return an array matches.', () => {
+            const lexer = new Lexer();
+
             lexer.setInput(input);
             lexer.addRule('numbers', /[0-9]+/);
+            lexer.scan();
 
-            const matches = lexer.scan();
-            expect(matches).toHaveLength(1);
+            expect(lexer.state.tokens).toHaveLength(1);
         });
     });
 });
