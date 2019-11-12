@@ -115,19 +115,21 @@ export default class Lexer implements ILexer {
     public scan() {
 
         for (const rule of this.rules) {
-            const regex = rule.regex;
+            try {
+                const regex = rule.regex;
+                const match = this.match(regex);
 
-            const match = this.match(regex);
+                if (match) {
+                    const token = new Token(rule.type, match[0].length, match[0]);
 
-            if (match) {
-                const token = new Token(rule.type, match[0].length, match[0]);
-                this.consume(token.length);
+                    this.consume(token.length);
+                    this.state.tokens.push(token);
 
-                this.state.tokens.push(token);
+                    return this.state.tokens;
+                }
+            } catch (err) {
+                throw new Error(err);
             }
-
         }
-
-        return this.state.tokens;
     }
 }

@@ -79,6 +79,8 @@ describe('Lexer', () => {
             const consumed = lexer.consume(1);
 
             expect(lexer.state.input).toBe('ello');
+            expect(lexer.state.consumed).toBe('h');
+            expect(lexer.state.position).toBe(1);
         });
     });
 
@@ -98,19 +100,44 @@ describe('Lexer', () => {
 
             expect(() => lexer.match(/^$/)).toThrow();
         });
+
+        it('should return undefined if no match', () => {
+            const lexer = new Lexer();
+            lexer.setInput('hello');
+
+            expect(lexer.match(/a/)).toBe(undefined);
+        });
     });
 
     describe('scan method', () => {
         const input = 'some 12 random 343 input';
 
-        it('should return an array matches.', () => {
+        it('should return an array of matched tokens.', () => {
             const lexer = new Lexer();
 
             lexer.setInput(input);
-            lexer.addRule('numbers', /[0-9]+/);
+            lexer.addRule('numbers', /[0-9]/);
             lexer.scan();
 
             expect(lexer.state.tokens).toHaveLength(1);
+        });
+
+        it('should return undefined if no matches', () => {
+            const lexer = new Lexer();
+
+            lexer.setInput('hello');
+            lexer.addRule('numbers', /[0-9]/);
+
+            expect(lexer.scan()).toBe(undefined);
+        });
+
+        it('should throw an error', () => {
+            const lexer = new Lexer();
+
+            lexer.setInput('');
+            lexer.addRule('numbers', /^$/);
+
+            expect(() => lexer.scan()).toThrow();
         });
     });
 });
