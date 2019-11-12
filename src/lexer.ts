@@ -1,9 +1,9 @@
 import Rule, { IRule } from './rule';
 import State, { IState } from './state';
+import Token, { IToken } from './token';
 
 export interface ILexer {
   column: number;
-  input: string;
   line: number;
   rules: IRule[];
   state: IState;
@@ -14,7 +14,6 @@ export interface ILexer {
  */
 export default class Lexer implements ILexer {
     public column: number;
-    public input: string;
     public line: number;
     public rules: IRule[];
     public state: IState;
@@ -24,7 +23,6 @@ export default class Lexer implements ILexer {
     constructor(input?: string) {
         this.column = 1;
         this.index = 0;
-        this.input = input || '';
         this.line = 1;
         this.rules = [];
         this.state = new State(input);
@@ -49,7 +47,7 @@ export default class Lexer implements ILexer {
     }
 
     /**
-     * push an array of Rule objects to the `Lexer` class rules
+     * push an array of `Rule` objects to the `Lexer` class rules property
      * @param {IRule[]} `rules`
      */
     public addRules(rules: IRule[]) {
@@ -72,51 +70,64 @@ export default class Lexer implements ILexer {
      * @returns {Lexer}
      */
     public setInput(input: string) {
-        this.input += input;
+        this.state.input += input;
 
         return this;
     }
 
     /**
+     * Remove the passed length from the lexer state's input
+     * @param {Number} length
+     */
+    public consume(length: number) {
+        const value = this.state.input.slice(0, length);
+        this.state.consumed += value;
+        this.state.position += length;
+        this.state.input = this.state.input.slice(length);
+
+        return value;
+    }
+
+    /**
      * Finds a match of the passed `RegExp` argument
      * @param {RegExp} regex
+     * @return {Object} match
      */
     public match(regex: RegExp) {
-        if (!(regex instanceof RegExp)) {
-            throw new Error('match() method expects you to pass a RegExp.');
-        }
 
-        try {
-            const match = regex.exec(this.input);
+        const match = regex.exec(this.state.input);
+
+        if (match) {
+            if (match![0] === ' ') {
+                throw new Error('Regex should not match empty string');
+            }
+
+            match.index = this.state.position;
 
             return match;
-        } catch (e) {
-            throw new Error(e);
         }
     }
 
     /**
-     * Scans the input for matches
+     * Scans the input for matches.
      * @returns {Token[]} matches
      */
     public scan() {
-        const matches = [];
 
         for (const rule of this.rules) {
             const regex = rule.regex;
 
-            const result = regex.exec(this.input);
+            const match = this.match(regex);
 
-            if (result) {
-                matches.push({
-                  action: rule.fn,
-                  length: result[0].length,
-                  result
-                });
+            if (match) {
+                const token = new Token(rule.type, match[0].length, match[0]);
+                this.consume(token.length);
+
+                this.state.tokens.push(token);
             }
 
         }
 
-        return matches;
+        return this.state.tokens;
     }
 }
