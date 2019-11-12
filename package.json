@@ -13,7 +13,9 @@
   "lint-staged": {
     "*.[jt]s": [
       "yarn run lint:fix",
-      "yarn run linter",
+      "yarn run linter"
+    ],
+    "/tests/*.spec.[jt]s": [
       "yarn run test:unit"
     ]
   },
