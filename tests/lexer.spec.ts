@@ -105,7 +105,7 @@ describe('Lexer', () => {
             const lexer = new Lexer();
             lexer.setInput('hello');
 
-            expect(lexer.match(/a/)).toBe(undefined);
+            expect(lexer.match(/[0-9]/)).toBe(undefined);
         });
     });
 

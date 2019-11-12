@@ -1,3 +1,3 @@
-import { ILexer, Lexer } from './lexer';
+import Lexer, { ILexer } from './lexer';
 
 export { ILexer, Lexer };
