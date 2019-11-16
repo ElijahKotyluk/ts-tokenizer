@@ -36,7 +36,7 @@ export default class Lexer implements ILexer {
      * @param {Array<number>} begin
      * @returns {Lexer}
      */
-    public addRule(type: string, pattern: RegExp, fn?: () => any, begin?: number[]) {
+    public addRule(type: string, pattern: RegExp, fn?: () => any, begin?: number[]): Lexer {
 
         const regex = new RegExp(pattern, 'gmu');
         const rule = new Rule(type, regex, fn, begin);
@@ -50,7 +50,7 @@ export default class Lexer implements ILexer {
      * push an array of `Rule` objects to the `Lexer` class rules property
      * @param {IRule[]} `rules`
      */
-    public addRules(rules: IRule[]) {
+    public addRules(rules: IRule[]): Lexer {
         for (const rule of rules) {
             this.addRule(
               rule.type,
@@ -69,7 +69,7 @@ export default class Lexer implements ILexer {
      * @param {String} input
      * @returns {Lexer}
      */
-    public setInput(input: string) {
+    public setInput(input: string): Lexer {
         this.state.input += input;
 
         return this;
@@ -79,7 +79,7 @@ export default class Lexer implements ILexer {
      * Remove the passed length from the lexer state's input
      * @param {Number} length
      */
-    public consume(length: number) {
+    public consume(length: number): string {
         const value = this.state.input.slice(0, length);
         this.state.consumed += value;
         this.state.position += length;
@@ -93,7 +93,7 @@ export default class Lexer implements ILexer {
      * @param {RegExp} regex
      * @return {Object} match
      */
-    public match(regex: RegExp) {
+    public match(regex: RegExp): RegExpExecArray | undefined {
 
         const match = regex.exec(this.state.input);
 
@@ -112,7 +112,7 @@ export default class Lexer implements ILexer {
      * Scans the input for matches.
      * @returns {Token[]} matches
      */
-    public scan() {
+    public scan(): Token[] | undefined {
 
         for (const rule of this.rules) {
             try {
