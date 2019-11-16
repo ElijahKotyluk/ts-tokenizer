@@ -2,7 +2,8 @@
   "name": "lexer",
   "version": "0.0.1",
   "description": "A simple lexer written in TypeScript.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "author": "Elijah Kotyluk",
   "license": "MIT",
   "husky": {
@@ -24,7 +25,8 @@
     "lint:fix": "wotan --fix",
     "test:coverage": "jest --coverage",
     "test:unit": "jest",
-    "commit": "yarn git-cz"
+    "commit": "yarn git-cz",
+    "clean": "rm -rf /dist/** /node_modules"
   },
   "devDependencies": {
     "@fimbul/wotan": "^0.21.1",
@@ -38,5 +40,7 @@
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
   },
-  "dependencies": {}
+  "files": [
+    "dist/**/*"
+  ]
 }
