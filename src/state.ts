@@ -29,7 +29,7 @@ export default class State implements IState {
     /**
      * Resets the state's properties to default values
      */
-    public reset() {
+    public reset(): void {
         this.consumed = '';
         this.input = '';
         this.remaining = '';
