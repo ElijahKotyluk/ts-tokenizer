@@ -9,8 +9,22 @@
 
 ### Lexer
 
+Create a Lexer.
+
+`Params`
+* `input` **{String}** (Optional): Pass an input string.
+ 
 ``` js
+// es5
+const Lexer = require('lexer');
+
 const lexer = new Lexer();
+
+// Optional `input` parameter. 
+const input = 'some input string';
+
+const lexer = new Lexer(input);
+
 ```
 
 ### setInput()
