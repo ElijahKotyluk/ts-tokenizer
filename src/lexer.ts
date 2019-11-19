@@ -31,6 +31,7 @@ export default class Lexer implements ILexer {
     /**
      *
      * Add's a rule to the Rules array.
+     * @param {String} type
      * @param {RegExp} pattern
      * @param {Function} fn
      * @param {Array<number>} begin
