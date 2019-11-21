@@ -53,7 +53,7 @@ Add a rule to the Lexer.
 * `fn` **{Function}** (Optional)
 
 ``` js
-// Examples
+// Example
 lexer.addRule('text', /^\w+/);
 
 // With optional `fn` passed
@@ -72,6 +72,7 @@ Add an array of rules to the Lexer.
 * `rules` **{Array<Rule>}**
 
 ``` js
+// Example
 const rulesArr = [
     {
         type: 'newline',
@@ -96,6 +97,7 @@ Consume the given length of the input string.
 * `length` **{Number}**
 
 ``` js
+// Example
 lexer.setInput('some string');
 
 lexer.consume(3);
@@ -113,6 +115,7 @@ Match the string with the passed RegExp pattern.
 * `regex` **{RegExp}**
 
 ``` js
+// Example
 lexer.setInput('some string');
 
 lexer.match(/^w{3}/); // ["som", index: 0, input: "some string", groups: undefined]
@@ -123,6 +126,7 @@ lexer.match(/^w{3}/); // ["som", index: 0, input: "some string", groups: undefin
 Scan the Lexer's input and return an array of tokens.
 
 ``` js
+// Example
 const rulesArr = [
     {
         type: 'two_digit_number',
@@ -130,7 +134,7 @@ const rulesArr = [
     },
     {
         type: 'four_letter_word',
-        regex: /^\w{4}/
+        regex: /^[a-zA-Z]{4}/
     }
 ]
 
