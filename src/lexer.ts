@@ -110,8 +110,8 @@ export default class Lexer implements ILexer {
     }
 
     /**
-     * Scans the input for matches.
-     * @returns {Token[]} matches
+     * Scans the input and returns an array of tokens.
+     * @returns {Token[]}
      */
     public scan() {
 
