@@ -31,6 +31,7 @@ export default class Lexer implements ILexer {
     /**
      *
      * Add's a rule to the Rules array.
+     * @param {String} type
      * @param {RegExp} pattern
      * @param {Function} fn
      * @param {Array<number>} begin
@@ -109,8 +110,8 @@ export default class Lexer implements ILexer {
     }
 
     /**
-     * Scans the input for matches.
-     * @returns {Token[]} matches
+     * Scans the input and returns an array of tokens.
+     * @returns {Token[]}
      */
     public scan(): Token[] | undefined {
 
