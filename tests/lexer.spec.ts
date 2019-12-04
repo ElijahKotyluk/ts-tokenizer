@@ -71,6 +71,15 @@ describe('Lexer', () => {
         });
     });
 
+    describe('loadInput method', () => {
+        const lexer = new Lexer('a');
+        const input = ' string'
+
+        lexer.loadInput(input);
+
+        expect(lexer.state.input).toHaveLength(8);
+    });
+
     describe('consume method', () => {
         it('should update the input based on passed length', () => {
             const lexer = new Lexer();

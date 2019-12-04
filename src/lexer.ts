@@ -1,6 +1,6 @@
 import Rule, { IRule } from './rule';
 import State, { IState } from './state';
-import Token, { IToken } from './token';
+import Token from './token';
 
 export interface ILexer {
   column: number;
