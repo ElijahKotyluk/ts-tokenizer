@@ -71,6 +71,17 @@ describe('Lexer', () => {
         });
     });
 
+    describe('loadInput method', () => {
+        it('should combine the pass string with the state input', () => {
+            const lexer = new Lexer("a");
+            const input = " string";
+
+            lexer.loadInput(input);
+
+            expect(lexer.state.input).toHaveLength(8);
+        });
+    });
+
     describe('consume method', () => {
         it('should update the input based on passed length', () => {
             const lexer = new Lexer();
@@ -138,6 +149,39 @@ describe('Lexer', () => {
             lexer.addRule('numbers', /^$/);
 
             expect(() => lexer.scan()).toThrow();
+        });
+    });
+
+    describe('bos{Beginning of Source} method', () => {
+        
+        it('should return false if the portion of the input has been consumed', () => {
+            const lexer = new Lexer("some string");
+
+            lexer.consume(11);
+
+            expect(lexer.bos()).toBe(false);
+        });
+
+        it('should return true if no portion of the input has been consumed', () => {
+            const lexer = new Lexer("some string");
+
+            expect(lexer.bos()).toBe(true);
+        });
+    });
+
+    describe('eos{End of Source} method', () => {
+        it('should return false if there is more input to be consumed', () => {
+            const lexer = new Lexer("some string");
+
+            expect(lexer.eos()).toBe(false);
+        });
+
+        it('should return true if the entire input has been consumed', () => {
+            const lexer = new Lexer("some string");
+
+            lexer.consume(11);
+
+            expect(lexer.eos()).toBe(true);
         });
     });
 });
