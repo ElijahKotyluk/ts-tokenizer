@@ -72,12 +72,14 @@ describe('Lexer', () => {
     });
 
     describe('loadInput method', () => {
-        const lexer = new Lexer('a');
-        const input = ' string'
+        it('should combine the pass string with the state input', () => {
+            const lexer = new Lexer("a");
+            const input = " string";
 
-        lexer.loadInput(input);
+            lexer.loadInput(input);
 
-        expect(lexer.state.input).toHaveLength(8);
+            expect(lexer.state.input).toHaveLength(8);
+        });
     });
 
     describe('consume method', () => {
