@@ -1,6 +1,6 @@
 {
-  "name": "lexer",
-  "version": "0.0.1",
+  "name": "ts-lexer",
+  "version": "0.0.0-alpha.0.2.3",
   "description": "A simple lexer written in TypeScript.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
