@@ -155,4 +155,13 @@ export default class Lexer implements ILexer {
     public bos(): boolean {
         return !this.state.consumed;
     }
+
+    /**
+     * Return true if `Lexer` has consumed the full input
+     * @name eos
+     * @return {Boolean}
+     */
+    public eos(): boolean {
+        return this.state.input === '';
+    }
 }

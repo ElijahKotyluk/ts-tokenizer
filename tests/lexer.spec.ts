@@ -150,7 +150,7 @@ describe('Lexer', () => {
         });
     });
 
-    describe('bos method', () => {
+    describe('bos{Beginning of Source} method', () => {
         
         it('should return false if the portion of the input has been consumed', () => {
             const lexer = new Lexer("some string");
@@ -164,6 +164,22 @@ describe('Lexer', () => {
             const lexer = new Lexer("some string");
 
             expect(lexer.bos()).toBe(true);
+        });
+    });
+
+    describe('eos{End of Source} method', () => {
+        it('should return false if there is more input to be consumed', () => {
+            const lexer = new Lexer("some string");
+
+            expect(lexer.eos()).toBe(false);
+        });
+
+        it('should return true if the entire input has been consumed', () => {
+            const lexer = new Lexer("some string");
+
+            lexer.consume(11);
+
+            expect(lexer.eos()).toBe(true);
         });
     });
 });
