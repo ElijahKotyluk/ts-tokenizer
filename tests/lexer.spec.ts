@@ -140,4 +140,21 @@ describe('Lexer', () => {
             expect(() => lexer.scan()).toThrow();
         });
     });
+
+    describe('bos method', () => {
+        
+        it('should return false if the portion of the input has been consumed', () => {
+            const lexer = new Lexer("some string");
+
+            lexer.consume(11);
+
+            expect(lexer.bos()).toBe(false);
+        });
+
+        it('should return true if no portion of the input has been consumed', () => {
+            const lexer = new Lexer("some string");
+
+            expect(lexer.bos()).toBe(true);
+        });
+    });
 });

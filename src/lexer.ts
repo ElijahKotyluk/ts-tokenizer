@@ -71,6 +71,19 @@ export default class Lexer implements ILexer {
      * @returns {Lexer}
      */
     public setInput(input: string): Lexer {
+        this.state.input = input;
+
+        return this;
+    }
+
+    /**
+     * Feeds the `Lexer` more data to consume
+     * @name loadInput
+     * @param {String} input
+     * @returns {Lexer}
+     */
+
+    public loadInput(input: string): Lexer {
         this.state.input += input;
 
         return this;
@@ -132,5 +145,14 @@ export default class Lexer implements ILexer {
                 throw new Error(err);
             }
         }
+    }
+
+    /**
+     * Return true if `Lexer` has not consumed anything
+     * @name bos
+     * @return {Boolean}
+     */
+    public bos(): boolean {
+        return !this.state.consumed;
     }
 }
