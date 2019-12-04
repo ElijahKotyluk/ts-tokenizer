@@ -5,6 +5,11 @@
 
 > A simple Lexer written in TypeScript
 
+## Getting Started
+
+`yarn add ts-lexer`
+`npm install --save ts-lexer`
+
 ## API
 
 ### Lexer
@@ -17,13 +22,16 @@ Create a Lexer.
 
 ``` js
 // es5
-const Lexer = require('lexer');
+var Lexer = require('lexer');
 
-const lexer = new Lexer();
+var lexer = new Lexer();
 
-// Optional `input` parameter. 
-const input = 'some input string';
+// es6
+import { Lexer } from "ts-lexer";
 
+const input = "random string";
+
+// Optional `input` param
 const lexer = new Lexer(input);
 
 ```
@@ -40,6 +48,21 @@ const input = 'a string';
 lexer.setInput(input);
 
 console.log(lexer.state.input); // 'a string'
+```
+
+### loadInput()
+
+`Params`
+
+* `input` **{String}** : Pass an input string.
+
+``` js
+const lexer = new Lexer("hello ");
+const input = 'a string';
+
+lexer.loadInput(input);
+
+console.log(lexer.state.input); // 'hello a string'
 ```
 
 ### addRule()
@@ -146,3 +169,11 @@ lexer.setInput('some 24 character string');
 
 lexer.scan() // [{length: 2, type: 'two_digit_number', value: 24}, {length: 4, type: four_letter_word, value: 'some'}]
 ```
+
+### bos()
+
+Beginning of Source; returns true if the input has not been consumed at all.
+
+### eos()
+
+End of Source; returns true if the input has been entirely consumed.
