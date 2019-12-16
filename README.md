@@ -1,6 +1,6 @@
 # TS-Lexer
 
-[![Build Status](https://travis-ci.com/ElijahKotyluk/lexer.svg?branch=master)](https://travis-ci.com/ElijahKotyluk/lexer)
+[![Build Status](https://travis-ci.com/ElijahKotyluk/ts-lexer.svg?branch=master)](https://travis-ci.com/ElijahKotyluk/ts-lexer)
 [![codecov](https://codecov.io/gh/ElijahKotyluk/lexer/branch/master/graph/badge.svg)](https://codecov.io/gh/ElijahKotyluk/lexer)
 
 > A simple Lexer written in TypeScript
