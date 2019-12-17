@@ -71,7 +71,7 @@ export default class Lexer implements ILexer {
      * @returns {Lexer}
      */
     public setInput(input: string): Lexer {
-        if (typeof input != 'string') {
+        if (typeof input !== 'string') {
             throw new Error('Expected a string')
         };
 
@@ -88,7 +88,7 @@ export default class Lexer implements ILexer {
      */
 
     public loadInput(input: string): Lexer {
-        if (typeof input != 'string') {
+        if (typeof input !== 'string') {
             throw new Error('Expected a string')
         };
 
@@ -104,7 +104,7 @@ export default class Lexer implements ILexer {
      */
     public consume(length: number): string {
 
-        if (typeof length != 'number') {
+        if (typeof length !== 'number') {
             throw new Error('Consume expected a number');
         }
 
@@ -127,7 +127,7 @@ export default class Lexer implements ILexer {
 
         if (match) {
             if (match[0] === '') {
-                throw new Error('Regex should not match an empty string');
+                throw new Error('Regex pattern should not match an empty string');
             }
 
             match.index = this.state.position;
