@@ -71,10 +71,6 @@ export default class Lexer implements ILexer {
      * @returns {Lexer}
      */
     public setInput(input: string): Lexer {
-        if (typeof input !== 'string') {
-            throw new Error('Expected a string')
-        };
-
         this.state.input = input;
 
         return this;
@@ -88,10 +84,6 @@ export default class Lexer implements ILexer {
      */
 
     public loadInput(input: string): Lexer {
-        if (typeof input !== 'string') {
-            throw new Error('Expected a string')
-        };
-
         this.state.input += input;
 
         return this;
@@ -103,12 +95,8 @@ export default class Lexer implements ILexer {
      * @returns {String} value
      */
     public consume(length: number): string {
-
-        if (typeof length !== 'number') {
-            throw new Error('Consume expected a number');
-        }
-
         const value = this.state.input.slice(0, length);
+        
         this.state.consumed += value;
         this.state.position += length;
         this.state.input = this.state.input.slice(length);
