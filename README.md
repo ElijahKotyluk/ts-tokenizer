@@ -8,6 +8,7 @@
 ## Getting Started
 
 `yarn add ts-lexer`
+
 `npm install --save ts-lexer`
 
 ## API
