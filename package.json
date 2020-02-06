@@ -4,7 +4,7 @@
   "description": "A simple lexer written in TypeScript.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "repository": "git@github.com:ElijahKotyluk/ts-lex.git",
+  "repository": "git@github.com:ElijahKotyluk/ts-lexer.git",
   "author": "Elijah Kotyluk <elijah@elijahkotyluk.com>",
   "license": "MIT",
   "husky": {
@@ -30,6 +30,7 @@
     "clean": "rm -rf /dist/** /node_modules"
   },
   "devDependencies": {
+    "@fimbul/valtyr": "^0.21.0",
     "@fimbul/wotan": "^0.21.1",
     "@types/jest": "^24.0.19",
     "@types/node": "^12.11.2",
