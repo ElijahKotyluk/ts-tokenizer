@@ -91,7 +91,7 @@ describe('Lexer', () => {
 
             expect(lexer.state.input).toBe('ello');
             expect(lexer.state.consumed).toBe('h');
-            expect(lexer.state.position).toBe(1);
+            expect(lexer.state.position.index).toBe(1);
         });
     });
 

@@ -17,9 +17,12 @@ Lexer {
   ],
   "state": State {
     "consumed": "",
-    "index": 0,
     "input": "",
-    "position": 0,
+    "position": Object {
+      "column": 0,
+      "index": 0,
+      "line": 1,
+    },
     "remaining": "",
     "tokens": Array [],
   },
@@ -34,9 +37,12 @@ Lexer {
   "rules": Array [],
   "state": State {
     "consumed": "",
-    "index": 0,
     "input": "some random input string",
-    "position": 0,
+    "position": Object {
+      "column": 0,
+      "index": 0,
+      "line": 1,
+    },
     "remaining": "",
     "tokens": Array [],
   },
@@ -51,9 +57,12 @@ Lexer {
   "rules": Array [],
   "state": State {
     "consumed": "",
-    "index": 0,
     "input": "random string of random strings",
-    "position": 0,
+    "position": Object {
+      "column": 0,
+      "index": 0,
+      "line": 1,
+    },
     "remaining": "",
     "tokens": Array [],
   },
