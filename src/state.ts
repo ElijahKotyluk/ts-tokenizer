@@ -12,13 +12,13 @@ export type Position = {
     column: number;
     index: number;
     line: number;
-}
+};
 
 const defaultPosition = {
     column: 0,
     index: 0,
     line: 1
-}
+};
 
 export default class State implements LexerState {
     public consumed: string;

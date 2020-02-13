@@ -1,22 +1,22 @@
 import Rule, { IRule } from './rule';
-import State, { IState } from './state';
+import State, { LexerState } from './state';
 import Token from './token';
 
-export interface ILexer {
+export interface TSLexer {
   column: number;
   line: number;
   rules: IRule[];
-  state: IState;
+  state: LexerState;
 }
 
 /**
  * @class `Lexer`
  */
-export default class Lexer implements ILexer {
+export default class Lexer implements TSLexer {
     public column: number;
     public line: number;
     public rules: IRule[];
-    public state: IState;
+    public state: LexerState;
 
     private index: number;
 
@@ -98,7 +98,7 @@ export default class Lexer implements ILexer {
         const value = this.state.input.slice(0, length);
         
         this.state.consumed += value;
-        this.state.position += length;
+        this.state.position.index += length;
         this.state.input = this.state.input.slice(length);
 
         return value;
@@ -118,7 +118,7 @@ export default class Lexer implements ILexer {
                 throw new Error('Regex pattern should not match an empty string');
             }
 
-            match.index = this.state.position;
+            match.index = this.state.position.index;
 
             return match;
         }
@@ -134,6 +134,8 @@ export default class Lexer implements ILexer {
             try {
                 const regex = rule.regex;
                 const match = this.match(regex);
+
+                console.log('match: ', match);
 
                 if (match) {
                     const token = new Token(rule.type, match[0].length, match[0]);
