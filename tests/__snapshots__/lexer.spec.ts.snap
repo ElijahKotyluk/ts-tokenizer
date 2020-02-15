@@ -7,9 +7,6 @@ Lexer {
   "line": 1,
   "rules": Array [
     Rule {
-      "begin": Array [
-        0,
-      ],
       "fn": undefined,
       "regex": /\\\\n/gmu,
       "type": "newline",
