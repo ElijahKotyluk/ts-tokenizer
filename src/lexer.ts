@@ -37,10 +37,10 @@ export default class Lexer implements TSLexer {
      * @param {Array<number>} begin
      * @returns {Lexer}
      */
-    public addRule(type: string, pattern: RegExp, fn?: () => any, begin?: number[]): Lexer {
+    public addRule(type: string, pattern: RegExp, fn?: () => any): Lexer {
 
         const regex = new RegExp(pattern, 'gmu');
-        const rule = new Rule(type, regex, fn, begin);
+        const rule = new Rule(type, regex, fn);
 
         this.rules.push(rule);
 
@@ -56,8 +56,7 @@ export default class Lexer implements TSLexer {
             this.addRule(
               rule.type,
               rule.regex,
-              rule.fn,
-              rule.begin
+              rule.fn
             );
         }
 
